@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!DOCTYPE html
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -6,40 +6,39 @@
     <title>Ultraviolet Proxy</title>
     <link rel="stylesheet" href="index.css">
     <link rel="icon" href="favicon.ico" type="image/x-icon">
-</head>
-<body>
-    <!-- Background Image -->
-    <div class="background-container">
-        <div class="background-overlay"></div>
-    </div>
+    <style>
+        /* Reset and base styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
-    <!-- Audio Player (Hidden) -->
-    <audio id="bgMusic" loop autoplay>
-        <source src="lil-debbie-king-khemoo.mp3" type="audio/mpeg">
-        Your browser does not support the audio element.
-    </audio>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
 
-    <!-- Music Controls -->
-    <div class="music-controls">
-        <button id="musicToggle" class="music-btn">🔊</button>
-        <span class="music-label">Now Playing: Lil Debbie - King Khemoo</span>
-    </div>
+        /* Purple Chevy Background - Using the TikTok image you provided */
+        .background-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url('https://p16-sign.tiktokcdn-us.com/tos-useast5-p-0068-tx/d3c5c5c5c5c5c5c5c5c5c5c5c5c5c5c5~tplv-photomode-zoomcover:720:720.jpeg?biz_tag=6E8WD');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            z-index: -2;
+        }
 
-    <div class="container">
-        <h1>Ultraviolet Proxy</h1>
-        <form id="uv-form">
-            <input id="uv-search-engine" value="https://www.google.com/search?q=%s" type="hidden"/>
-            <input id="uv-address" type="text" placeholder="Search the web freely..." class="search-input"/>
-            <button type="submit" class="search-btn">Go</button>
-        </form>
-        <div class="footer">
-            <p>Powered by Ultraviolet</p>
-        </div>
-    </div>
-
-    <script src="uv/uv.bundle.js"></script>
-    <script src="uv/uv.config.js"></script>
-    <script src="register-sw.js"></script>
-    <script src="index.js"></script>
-</body>
-</html>
+        /* Fallback background using your base64 image if URL fails */
+        .background-fallback {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url('data:image/jpeg;base64,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GVOht7CMRF9ZH/UZ806MZF9ZH/UZ81425FGVOht7CMRF9ZH/UZ806MZF9ZH/UZ81425FGVOht7CMRF9ZH/UZ806MZF9ZH/UZ81425FGVOht7CMRF9ZH/UZ806MZF9ZH/UZ81425FGVOht7CMRF9ZH/UZ806MZF9ZH/UZ81425FGVOht7CMRF9ZH/UZ806MZF9ZH/UZ81425FGVOht7CMRF9ZH/UZ806MZF9ZH/UZ81425FGVOht7CMRF9ZH/UZ806MZF9ZH/UZ81425FGVOht7CMRF9ZH/UZ806MZF9ZH/UZ81425FGVOht7CMRF9ZH/UZ806MZF9ZH/UZ81425FGVOht7CMRF9ZH/UZ806MZF9ZH/UZ81425FGVOht7CMRF9ZH/UZ806MZF9ZH/UZ81425FGVOht7CMRF9ZH/UZ806MZF9ZH/UZ81425FGVOht7CMRF9ZH/UZ806MZF9ZH/UZ81425FGVOht7CMRF9ZH/UZ806MZF9ZH/UZ81425FGVOht7CMRF9ZH/UZ806MZF9ZH/UZ81425FGVOht7CMRF9ZH/UZ806MZF9ZH/UZ81425FGVOht7CMRF9ZH/UZ806MZF9ZH/UZ81425FGVOht7CMRF9ZH/UZ806MZF9ZH/UZ81425FGVOht7CMRF9ZH/UZ806MZF9ZH/UZ81425FGVOht7CMRF9ZH/UZ806MZF9ZH/UZ81425FGVOht7CMRF9ZH/UZ806MZF9ZH/UZ81425FGVOht7CMRF9ZH/UZ806MZF9ZH/UZ81425FGVOht7CMRF9ZH/UZ806MZF9ZH/UZ81425FGVOht7CMRF9ZH/UZ806MZF9ZH/UZ81425FGVOht7CMRF9ZH/UZ806MZF9ZH/UZ81425FGVOht7CMRF9ZH/UZ806MZF9ZH/UZ81425FGVOht7CMRF9ZH/UZ806MZF9ZH/UZ81425FGVOht7CMRF9ZH/UZ806MZF9ZH/UZ81425FGVOht7CMRF9ZH/UZ806MZF9ZH/UZ81425FGVOht7CMRF9ZH/UZ806MZF9ZH/UZ81425FGVOht7CMRF9ZH/UZ806MZF9ZH/UZ81425FGVOht7CMRF9ZH/UZ806MZF9ZH/UZ81425FGVOht7CMRF9ZH/UZ806MZF9ZH/UZ81425FGVOht7CMRF9ZH/UZ806MZF9ZH/UZ81425FGVOht7CMRF9ZH/UZ806MZF9ZH/UZ81425FGVOht7CMRF9ZH/UZ806MZF9ZH/UZ81425FGVOht7CMRF9ZH/UZ806MZF9ZH/UZ81425FGVOht7CMRF9ZH/UZ806MZF9ZH/UZ81425FGVOht7CMRF9ZH/UZ806
