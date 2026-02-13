@@ -1,4 +1,4 @@
-<!DOCTYPE html
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -7,38 +7,185 @@
     <link rel="stylesheet" href="index.css">
     <link rel="icon" href="favicon.ico" type="image/x-icon">
     <style>
-        /* Reset and base styles */
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
 
-        body {
+        html, body {
+            height: 100%;
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            min-height: 100vh;
-            overflow-x: hidden;
         }
 
-        /* Purple Chevy Background - Using the TikTok image you provided */
-        .background-container {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-image: url('https://p16-sign.tiktokcdn-us.com/tos-useast5-p-0068-tx/d3c5c5c5c5c5c5c5c5c5c5c5c5c5c5c5~tplv-photomode-zoomcover:720:720.jpeg?biz_tag=6E8WD');
+        /* Background Image - Dropped Purple NNBS Silverado */
+        body {
+            background-image: url('https://images.customwheeloffset.com/web-compressed/1460796-3-2005-silverado-1500-chevrolet-belltech-lowered-4f-6r-ravetti-m3-machined.jpg');
             background-size: cover;
             background-position: center;
             background-repeat: no-repeat;
-            z-index: -2;
+            background-attachment: fixed;
         }
 
-        /* Fallback background using your base64 image if URL fails */
-        .background-fallback {
-            position: fixed;
-            top: 0;
-            left: 0;
+        /* Dark overlay for readability */
+        .overlay {
+            background: rgba(0, 0, 0, 0.7);
+            min-height: 100vh;
             width: 100%;
-            height: 100%;
-            background-image: url('data:image/jpeg;base64,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GVOht7CMRF9ZH/UZ806MZF9ZH/UZ81425FGVOht7CMRF9ZH/UZ806MZF9ZH/UZ81425FGVOht7CMRF9ZH/UZ806MZF9ZH/UZ81425FGVOht7CMRF9ZH/UZ806MZF9ZH/UZ81425FGVOht7CMRF9ZH/UZ806MZF9ZH/UZ81425FGVOht7CMRF9ZH/UZ806MZF9ZH/UZ81425FGVOht7CMRF9ZH/UZ806MZF9ZH/UZ81425FGVOht7CMRF9ZH/UZ806MZF9ZH/UZ81425FGVOht7CMRF9ZH/UZ806MZF9ZH/UZ81425FGVOht7CMRF9ZH/UZ806MZF9ZH/UZ81425FGVOht7CMRF9ZH/UZ806MZF9ZH/UZ81425FGVOht7CMRF9ZH/UZ806MZF9ZH/UZ81425FGVOht7CMRF9ZH/UZ806MZF9ZH/UZ81425FGVOht7CMRF9ZH/UZ806MZF9ZH/UZ81425FGVOht7CMRF9ZH/UZ806MZF9ZH/UZ81425FGVOht7CMRF9ZH/UZ806MZF9ZH/UZ81425FGVOht7CMRF9ZH/UZ806MZF9ZH/UZ81425FGVOht7CMRF9ZH/UZ806MZF9ZH/UZ81425FGVOht7CMRF9ZH/UZ806MZF9ZH/UZ81425FGVOht7CMRF9ZH/UZ806MZF9ZH/UZ81425FGVOht7CMRF9ZH/UZ806MZF9ZH/UZ81425FGVOht7CMRF9ZH/UZ806MZF9ZH/UZ81425FGVOht7CMRF9ZH/UZ806MZF9ZH/UZ81425FGVOht7CMRF9ZH/UZ806MZF9ZH/UZ81425FGVOht7CMRF9ZH/UZ806MZF9ZH/UZ81425FGVOht7CMRF9ZH/UZ806MZF9ZH/UZ81425FGVOht7CMRF9ZH/UZ806MZF9ZH/UZ81425FGVOht7CMRF9ZH/UZ806MZF9ZH/UZ81425FGVOht7CMRF9ZH/UZ806MZF9ZH/UZ81425FGVOht7CMRF9ZH/UZ806MZF9ZH/UZ81425FGVOht7CMRF9ZH/UZ806MZF9ZH/UZ81425FGVOht7CMRF9ZH/UZ806MZF9ZH/UZ81425FGVOht7CMRF9ZH/UZ806MZF9ZH/UZ81425FGVOht7CMRF9ZH/UZ806MZF9ZH/UZ81425FGVOht7CMRF9ZH/UZ806MZF9ZH/UZ81425FGVOht7CMRF9ZH/UZ806MZF9ZH/UZ81425FGVOht7CMRF9ZH/UZ806MZF9ZH/UZ81425FGVOht7CMRF9ZH/UZ806MZF9ZH/UZ81425FGVOht7CMRF9ZH/UZ806MZF9ZH/UZ81425FGVOht7CMRF9ZH/UZ806
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        /* Main container */
+        .container {
+            text-align: center;
+            color: white;
+            max-width: 600px;
+            width: 100%;
+        }
+
+        h1 {
+            font-size: 3.5em;
+            margin-bottom: 10px;
+            text-shadow: 3px 3px 6px rgba(0,0,0,0.9);
+            color: #a855f7;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+        }
+
+        p {
+            font-size: 1.3em;
+            margin-bottom: 30px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.8);
+            color: #e9d5ff;
+        }
+
+        /* Form styling */
+        form {
+            background: rgba(0, 0, 0, 0.8);
+            padding: 30px;
+            border-radius: 15px;
+            border: 2px solid #a855f7;
+            box-shadow: 0 0 20px rgba(168, 85, 247, 0.5);
+        }
+
+        input[type="text"] {
+            width: 100%;
+            padding: 15px;
+            margin-bottom: 15px;
+            border: 2px solid #7c3aed;
+            border-radius: 8px;
+            background: rgba(20, 20, 20, 0.9);
+            color: white;
+            font-size: 16px;
+            outline: none;
+        }
+
+        input[type="text"]:focus {
+            border-color: #a855f7;
+            box-shadow: 0 0 10px rgba(168, 85, 247, 0.5);
+        }
+
+        button {
+            width: 100%;
+            padding: 15px;
+            background: linear-gradient(135deg, #7c3aed, #a855f7);
+            color: white;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 18px;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            transition: all 0.3s ease;
+        }
+
+        button:hover {
+            background: linear-gradient(135deg, #6d28d9, #9333ea);
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(168, 85, 247, 0.4);
+        }
+
+        /* Music player section */
+        .music-container {
+            margin-top: 30px;
+            padding: 20px;
+            background: rgba(0, 0, 0, 0.8);
+            border-radius: 15px;
+            border: 2px solid #a855f7;
+            box-shadow: 0 0 20px rgba(168, 85, 247, 0.5);
+        }
+
+        .music-title {
+            color: #a855f7;
+            font-size: 1.2em;
+            font-weight: bold;
+            margin-bottom: 15px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        audio {
+            width: 100%;
+            height: 40px;
+            border-radius: 8px;
+        }
+
+        /* Custom audio player styling */
+        audio::-webkit-media-controls-panel {
+            background: #1a1a1a;
+        }
+
+        audio::-webkit-media-controls-current-time-display,
+        audio::-webkit-media-controls-time-remaining-display {
+            color: #a855f7;
+        }
+
+        .note {
+            margin-top: 10px;
+            font-size: 0.9em;
+            color: #888;
+            font-style: italic;
+        }
+
+        /* Responsive */
+        @media (max-width: 600px) {
+            h1 {
+                font-size: 2.5em;
+            }
+            
+            form {
+                padding: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="overlay">
+        <div class="container">
+            <h1>Ultraviolet</h1>
+            <p>Browse Freely</p>
+            
+            <form id="uv-form" action="/proxy" method="GET">
+                <input type="hidden" name="search-engine" value="https://www.google.com/search?q=%s"/>
+                <input type="text" name="url" placeholder="Enter URL here..." autocomplete="off" required/>
+                <button type="submit">Surf</button>
+            </form>
+
+            <!-- Background Music -->
+            <div class="music-container">
+                <div class="music-title">🎵 King Khemoo - Lil Debbie</div>
+                <audio controls autoplay loop>
+                    <source src="Little%20Debbie.mp3" type="audio/mpeg">
+                    Your browser does not support the audio element.
+                </audio>
+                <p class="note">Click play if music doesn't start automatically</p>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
